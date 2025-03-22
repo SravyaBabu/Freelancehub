@@ -1,0 +1,47 @@
+{% extends 'Coder/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="dashboard_package scrollbar_custom w-full bg-surface">
+                <div class="container h-fit lg:pt-15 lg:pb-30 max-lg:py-12 max-sm:py-8">
+                    <button class="btn_open_popup btn_menu_dashboard flex items-center gap-2 lg:hidden" data-type="menu_dashboard">
+                        <span class="ph ph-squares-four text-xl"></span>
+                        <strong class="text-button">Menu</strong>
+                    </button>
+                    <h4 class="heading4 max-lg:mt-3">My Reviews</h4>
+                    <div class="table_package w-full p-10 mt-7.5 rounded-lg bg-white shadow-sm">
+                        <div class="list overflow-x-auto w-full">
+                            <table class="w-full max-[1400px]:w-[1200px] max-md:w-[1000px]">
+                                <thead class="border-b border-line">
+                                    <tr>
+                                        <th scope="col" class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">Project</th>
+                                        <th scope="col" class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">Buyer</th>
+                                        <th scope="col" class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">Review</th>
+                                        <th scope="col" class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">Stars</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in coderreview %}
+                                    <tr class="item duration-300 hover:bg-background">
+                                        <td class="p-5 whitespace-nowrap">6508</td>
+                                        <td class="p-5 heading6 whitespace-nowrap">{{i.buyerid.fullname}}</td>
+                                        <td class="p-5">
+                                            {{i.review}}
+                                        </td>
+                                        <td class="p-5">
+                                            {{i.feedback}}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="lg:fixed bottom-0 left-0 z-[1] lg:pl-[280px] flex items-center justify-center w-full h-15 bg-white duration-300 shadow-md">
+                    <span class="copyright caption1 text-secondary">©2024 FreelanHub. All Rights Reserved</span>
+                </div>
+            </div>
+
+{% endblock %}

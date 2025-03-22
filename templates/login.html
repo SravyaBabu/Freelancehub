@@ -1,0 +1,64 @@
+<style> 
+.form-group{margin-top:50px;color: white;}
+.heading3{
+    margin-top:100px;
+    color:white;
+}
+.flex{
+    color: white;
+}
+
+.text-primary{
+    color: wheat;
+}
+</style>
+
+{% extends 'common.html' %}
+
+{% block content %}
+{% load static %}
+
+
+
+        <!-- Form Login -->
+        <section class="form_login lg:py-20 sm:py-14 py-10">
+            <div class="container flex ">
+                <div class="content sm:w-[448px] w-full">
+                    <h3 class="heading3 text-center">Log In</h3>
+                    <form class="form mt-6" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Email address*</label>
+                            <input id="username" type="email" name="username" class="form-control w-full mt-3 border border-line px-4 h-[50px] rounded-lg" placeholder="Email address*" required />
+                        </div>
+                        <div class="form-group mt-6">
+                            <label for="password">Password*</label>
+                            <input id="password" type="password" name="password" class="form-control w-full mt-3 border border-line px-4 h-[50px] rounded-lg" placeholder="Password*" required />
+                        </div>
+                        <div class="flex items-center justify-between mt-6">
+                            <div class="sub-input-checkbox flex items-center gap-2">
+                                <input id="checkbox" type="checkbox" name="checkbox" />
+                                <label for="checkbox" class="text-surface1">Remember me</label>
+                            </div>
+                           
+                        </div>
+                        <div class="block-button mt-6">
+                            <button class="button-main bg-primary w-full text-center">Login</button>
+                        </div>
+                        <div class="navigate flex items-center justify-center gap-2 mt-6">
+                            <span class="text-surface1">Not registered yet?</span>
+                            <a class="text-button hover:underline" href="/coderregister">Sign Up</a>
+                        </div>
+                        <div class="block-button mt-6">
+                            <a href="/" class="button-main -border hover:bg-black w-full text-center">Go to Home</a>
+                        </div>
+                       
+                        
+                    </form>
+                </div>
+            </div>
+        </section>
+
+       
+
+{% endblock %} 

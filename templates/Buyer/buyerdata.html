@@ -1,0 +1,27 @@
+{% extends 'Buyer/common.html' %}
+{% block content %}
+{% load static %}
+ <form method="Post">
+            {% csrf_token %}
+            <div class="information p-8 mt-4 rounded-lg bg-white shadow-sm">
+                <h5 class="heading5">About</h5>
+                <div class="grid sm:grid-cols-2 gap-5 mt-5">
+
+                    <div class="full_name">
+                        <label for="company">Company Name: <span class="text-red">*</span></label>
+                        <input class="w-full h-12 px-4 mt-2 border-line rounded-lg capitalize" name="company" id="company" type="text" placeholder="OASYS INFO... " value="" required />
+                    </div>
+                     <div class="full_name">
+                        <label for="companydetails">Company About: <span class="text-red">*</span></label>
+                        <input class="w-full h-12 px-4 mt-2 border-line rounded-lg capitalize" name="companydetails" id="companydetails" type="text" placeholder="Marketing agency... " value="" required />
+                    </div>
+                     <div class="full_name">
+                        <label for="buyerdetails">About you: <span class="text-red">*</span></label>
+                        <input class="w-full h-12 px-4 mt-2 border-line rounded-lg capitalize" id="buyerdetails" name="buyerdetails" type="text" placeholder="TL of OASYS INFO... " value="" required />
+                    </div>
+
+                </div>
+            </div>
+            <button class="button-main mt-4" type="submit">Save & Publish</button>
+        </form>
+{% endblock %}

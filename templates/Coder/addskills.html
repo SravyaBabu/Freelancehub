@@ -1,0 +1,26 @@
+{% extends 'Coder/common.html' %}
+{% block content %}
+{% load static %}
+<div class="dashboard_applied scrollbar_custom w-full bg-surface">
+                <div class="container h-fit lg:pt-15 lg:pb-30 max-lg:py-12 max-sm:py-8">
+                    <button class="btn_open_popup btn_menu_dashboard flex items-center gap-2 lg:hidden" data-type="menu_dashboard">
+                        <span class="ph ph-squares-four text-xl"></span>
+                        <strong class="text-button">Menu</strong>
+                    </button>
+<form method="Post">
+            {% csrf_token %}
+            <div class="information p-8 mt-4 rounded-lg bg-white shadow-sm">
+                <h5 class="heading5">Skills</h5>
+                <div class="grid sm:grid-cols-2 gap-5 mt-5">
+
+                    <div class="full_name">
+                        <label for="skills">Skills: <span class="text-red">*</span></label>
+                        <input class="w-full h-12 px-4 mt-2 border-line rounded-lg capitalize" name="skills" id="skills" type="text" placeholder="Python" required />
+                    </div>
+
+                </div>
+            </div>
+            <button class="button-main mt-4" type="submit">Save & Publish</button>
+        </form>
+
+{% endblock %}

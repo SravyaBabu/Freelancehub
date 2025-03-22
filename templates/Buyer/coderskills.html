@@ -1,0 +1,36 @@
+{% extends 'Buyer/common.html' %}
+{% block content %}
+{% load static %}
+<div class="active_work p-6 mt-7.5 rounded-lg bg-white">
+    <div class="list overflow-x-auto w-full p-5 rounded-xl">
+        <table class="w-full">
+            <thead class="border-b border-line">
+                <tr>
+                    <th class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                        Coder Name
+                    </th>
+                    <th class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                        Skills
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if coderskills %}
+                <tr class="item duration-300 hover:bg-background">
+                    <td class="p-5">{{ coder.fullname }}</td>
+                    <td class="p-5">
+                        {% for i in coderskills %}
+                            {{ i.skills }}
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% else %}  
+                <tr>
+                    <td colspan="2" class="p-5 text-center">No skills found.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

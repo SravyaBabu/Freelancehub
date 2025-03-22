@@ -1,0 +1,218 @@
+{% extends 'Buyer/common.html' %}
+{% block content %}
+{% load static %}
+<div class="dashboard_profile scrollbar_custom w-full bg-surface">
+    <div class="container h-fit lg:pt-15 lg:pb-30 max-lg:py-12 max-sm:py-8">
+        <button class="btn_open_popup btn_menu_dashboard flex items-center gap-2 min-[1400px]:hidden"
+            data-type="menu_dashboard">
+            <span class="ph ph-squares-four text-xl"></span>
+            <strong class="text-button">Menu</strong>
+        </button>
+        <div class="profile_block overflow-hidden flex max-lg:flex-col-reverse gap-y-10 w-full mt-7.5">
+            <div class="left flex-shrink-0 lg:w-[29.5%]">
+                <div class="info_overview p-8 rounded-lg bg-white shadow-sm">
+                    <h5 class="heading5">{{coder.fullname}}</h5>
+                    <ul class="candidates_info pt-1">
+                        <li
+                            class="industry flex flex-wrap items-center justify-between  w-full py-4 border-b border-line">
+                            <img src="../static/media/{{coder.photo}}" alt="static/media/{{coder.photo}}"
+                                class="w-20 h-20" />
+                        </li>
+
+
+                        <li
+                            class="industry flex flex-wrap items-center justify-between gap-1 w-full py-4 border-b border-line">
+                            <span class="text-secondary">Title</span>
+                            <strong class="text-title">{{coder.role}}</strong>
+                        </li>
+                        <li
+                            class="location flex items-center justify-between   gap-1 w-full py-14 border-b border-line">
+                            <span class="text-secondary">Address:</span>
+                            <strong class="text-title">{{coder.address}}</strong>
+                        </li>
+                        <li
+                            class="phone flex flex-wrap items-center justify-between gap-1 w-full py-4 border-b border-line">
+                            <span class="text-secondary">Phone:</span>
+                            <strong class="text-title">{{coder.mobile}}</strong>
+                        </li>
+                        <li
+                            class="email flex flex-wrap items-center justify-between gap-1 w-full py-4 border-b border-line">
+                            <span class="text-secondary">Email:</span>
+                            <strong class="text-title">{{coder.username}}</strong>
+                        </li>
+                    </ul>
+                </div>
+
+
+
+                
+
+
+
+            </div>
+
+
+            <div class="right lg:w-[70.5%] lg:pl-7.5">
+                <div class="about p-8 rounded-lg bg-white shadow-sm">
+                    <h5 class="heading5">About me</h5>
+                    <div class="desc mt-3">
+                        <p class="body2 text-secondary">{{coder.intro }}</p>
+                    </div>
+                </div>
+
+                <div class="tools p-8 mt-7.5 rounded-lg bg-white shadow-sm">
+                    <h5 class="heading5">Skills</h5>
+                    <div class="desc mt-3">
+                        {% if coderskills %}
+                        <tr class="item duration-300 hover:bg-background">
+                            <td class="p-5">
+                                {% for i in coderskills %}
+                                {{ i.skills }}
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="2" class="p-5 text-center">No skills found.</td>
+                        </tr>
+                        {% endif %}
+                    </div>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="tools p-8 mt-7.5 rounded-lg bg-white shadow-sm">
+                    <h5 class="heading5">Reviews</h5>
+                    <div class="desc mt-3">
+                        <table class="w-full max-[1400px]:w-[1200px] max-md:w-[1000px]">
+                            <thead class="border-b border-line">
+
+                                <tr>
+                                    <th scope="col"
+                                        class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                    </th>
+                                    <th scope="col"
+                                        class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                        Buyer</th>
+                                    <th scope="col"
+                                        class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                        Stars
+                                    </th>
+                                    <th scope="col"
+                                        class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                        Feedback
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in coderreview %}
+                                <tr class="item duration-300 hover:bg-background">
+                                    <td><img src="../static/media/{{i.buyerid.photo}}"
+                                            alt="static/media/{{i.buyerid.photo}}" class="w-20 h-20 rounded-full" />
+                                    </td>
+                                    <td class="p-5 whitespace-nowrap">{{i.buyerid.fullname}}</td>
+                                    <td class="p-5 whitespace-nowrap">{% if i.review == 1 %}⭐
+                                        {% elif i.review == 2 %}⭐⭐
+                                        {% elif i.review == 3 %}⭐⭐⭐
+                                        {% elif i.review == 4 %}⭐⭐⭐⭐
+                                        {% elif i.review == 5 %}⭐⭐⭐⭐⭐
+                                        {% else %} No Review
+                                        {% endif %}
+                                    </td>
+
+                                    <td class="p-5 whitespace-wrap">{{i.feedback}}</td>
+
+
+
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                </div>
+
+                <div class="tools p-8 mt-7.5 rounded-lg bg-white shadow-sm">
+                    <h5 class="heading5">Projects</h5>
+                    <div class="desc mt-3">
+                        <table class="w-full max-[1400px]:w-[1200px] max-md:w-[1000px]">
+                            <thead class="border-b border-line">
+
+                                <tr>
+                                    <th scope="col"
+                                        class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                        Buyer</th>
+                                    <th scope="col"
+                                        class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                        Projects
+                                    </th>
+                                
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for i in projects %}
+                                <tr class="item duration-300 hover:bg-background">
+                                    <td class="p-5 whitespace-nowrap">{{i.buyerid.fullname}}</td>
+                                    <td class="p-5 whitespace-nowrap">{{i.title}}
+                                    </td>
+                                </tr>
+
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+                </div>
+
+
+
+                <!-- <div class="list_social p-8 mt-7.5 rounded-lg bg-white shadow-sm">
+                    <h5 class="heading5">Projects</h5>
+                    <table>
+                        <thead class="border-b border-line">
+
+                            <tr>
+
+                                <th scope="col"
+                                    class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                    Buyer</th>
+                                <th scope="col"
+                                    class="px-5 py-4 text-left text-sm font-bold uppercase text-secondary whitespace-nowrap">
+                                    Projects
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in projects %}
+                            <tr class="item duration-300 hover:bg-background">
+                                <td class="p-5 whitespace-nowrap">{{i.buyerid.fullname}}</td>
+                                <td class="p-5 whitespace-nowrap">{{i.title}}
+                                </td>
+
+                                <td class="p-5 whitespace-wrap">{{i.feedback}}</td>
+
+
+
+                            </tr>
+
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> -->
+                <div
+                    class="lg:fixed bottom-0 left-0 z-[2] lg:pl-[280px] flex items-center justify-center w-full h-15 bg-white duration-300 shadow-md">
+                    <span class="copyright caption1 text-secondary">©2024 FreelanHub. All Rights Reserved</span>
+                </div>
+            </div>
+            {% endblock %}

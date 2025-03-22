@@ -1,0 +1,62 @@
+{% extends 'Coder/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="dashboard_main lg:w-screen lg:h-screen sm:pt-20 pt-16 overflow-auto">
+    <div class="inner scrollbar_custom max-h-full h-full py-10 px-10 overflow-y-auto">
+        <div class="heading items-center justify-between flex mb-4">
+<div class="project lg:py-20 sm:py-14 py-10">
+    <div class="container flex flex-col items-center">
+        <!-- Filter Section -->
+        <div class="filter w-full flex flex-wrap items-center justify-between gap-8 gap-y-3 relative">
+            <button id="filter_btn" class="filter_btn inline-flex items-center gap-1.5 py-1.5 px-2.5 border border-line rounded-md duration-300 hover:bg-primary hover:text-white">
+                <span class="ph ph-sliders-horizontal text-xl"></span>
+                <span>Filters</span>
+            </button>
+        </div>
+
+        <!-- Project List -->
+        <ul class="list_layout_cols list_project grid sm:grid-cols-2 grid-cols-1 sm:gap-7.5 gap-5 md:mt-10 mt-7 w-full">
+            {% for i in projects %}
+       
+            <li class="project_item p-6 rounded-lg bg-white duration-300 shadow-md">
+                <div class="project_inner">
+                    <div class="project_info flex justify-between gap-3 pb-4 border-b border-line">
+                        <div class="project_content">
+                            <a href="/coderprojectdetails?id={{i.id}}" class="project_name heading6 duration-300 hover:underline">{{i.title}}</a>
+                            <div class="project_related_info flex flex-wrap items-center gap-3 mt-3">
+                                <div class="project_date flex items-center gap-1">
+                                    <span class="ph ph-calendar-blank text-xl text-secondary"></span>
+                                    <span class="caption1 text-secondary">{{i.today}}</span>
+                                </div>
+
+                            </div>
+                            <p class="project_desc mt-3 text-secondary">{{i.description}}</p>
+
+                        </div>
+                        <button class="add_wishlist_btn relative border">
+                            <span class="ph ph-heart text-xl"></span>
+                            <span class="ph-fill ph-heart text-xl"></span>
+                        </button>
+                    </div>
+                    <div class="project_more_info flex items-center justify-between pt-4">
+                        <div class="project_proposals">
+                            <span class="text-secondary">Buyer: {{i.buyerid.fullname}} </span>
+                        </div>
+                        <div class="project_price">
+                            <span class="price text-title">${{i.salary}}</span>
+                            <span class="text-secondary">/{{i.jobtype}}</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+</div>
+</div>
+</div>
+{% endblock %}

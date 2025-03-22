@@ -1,0 +1,77 @@
+{% extends 'Buyer/common.html' %}
+{% block content %}
+{% load static %}
+<div class="dashboard_project scrollbar_custom w-full bg-surface">
+    <form method="POST" enctype="multipart/form-data"
+        class="container h-fit lg:pt-15 lg:pb-30 max-lg:py-12 max-sm:py-8">
+        {% csrf_token %}
+        <button class="btn_open_popup btn_menu_dashboard flex items-center gap-2 lg:hidden" data-type="menu_dashboard">
+            <span class="ph ph-squares-four text-xl"></span>
+            <strong class="text-button">Menu</strong>
+        </button>
+        <div class="flex flex-wrap items-center justify-between gap-4">
+            <h4 class="heading4 max-lg:mt-3">Submit Project</h4>
+            <button class="button-main" type="submit">Save & Publish</button>
+        </div>
+        <div class="infomation p-8 mt-7.5 rounded-lg bg-white">
+            <h5 class="heading5">Infomation</h5>
+            <div class="form grid sm:grid-cols-2 gap-5 mt-5">
+                <div class="title">
+                    <label for="title">Title: <span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg" name="title" id="title" type="text"
+                        placeholder="Title..." required />
+                </div>
+                <div class="categories">
+                    <label for="categories">Category: <span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg uppercase" name="categories"
+                        id="categories" placeholder="Mobile App, Website" type="text" required />
+                </div>
+                <div class="type">
+                    <label for="jobtype">Job Type: <span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg uppercase" name="jobtype" id="jobtype"
+                        placeholder="Full-time" type="text" required />
+                </div>
+                <div class="duration">
+                    <label for="duration">Duration(months): <span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg uppercase" name="duration" id="duration"
+                        type="text" required />
+                </div>
+
+                <div class="max_salary">
+                    <label for="salary">Pay<span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg uppercase" name="salary" id="salary"
+                        type="text" required />
+                </div>
+                <div class="level">
+                    <label for="careerlevel">Project Level: <span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg uppercase" name="careerlevel"
+                        id="careerlevel" placeholder="beginner,intermediate" type="text" required />
+                </div>
+                {% comment %} <div class="experience">
+                    <label>Experience: <span class="text-red">*</span></label>
+                    <div class=" flex items-center w-full h-12 pr-10 pl-4 mt-2 border border-line rounded-lg">
+                    </div>
+                </div> {% endcomment %}
+                <div class="experience">
+                    <label for="experience">Experience: <span class="text-red">*</span></label>
+                    <input class="w-full h-12 px-4 mt-2 border-line rounded-lg uppercase" name="experience"
+                        id="experience" type="text" required />
+                </div>
+                <div class="desc col-span-full">
+                    <label for="description">Description:</label>
+                    <input type="text" name="description" class="form-control mt-2 w-full px-4 border-line rounded-lg" placeholder="Enter description"style="height:200px;font-size:14p">
+
+                </div>
+            </div>
+
+            <div class="upload_portfolio p-8 mt-7.5 rounded-lg bg-white">
+                <h5 class="heading5">Attachments</h5>
+                <div class="multiple-image-section mt-5">
+                    <div class="image-previews flex flex-wrap gap-5">
+                        <label for="attachment"></label>
+                        <input type="file" id="attachment" name="attachment">
+                    </div>
+                </div>
+            </div>
+    </form>
+    {% endblock %}
